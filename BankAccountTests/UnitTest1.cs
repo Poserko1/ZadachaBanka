@@ -58,6 +58,25 @@ namespace BankAccountTests
             Assert.AreEqual(ex.Message, "Negative amount");
 
         }
+        [Test]
+        public void CreditShouldIncreaseBalance()
+        {
+            BankAccount bankAccount = new BankAccount(123);
+            decimal percent = 10;
+            bankAccount.Credit(percent);
+            Assert.AreEqual(percent, bankAccount.Balance);
+        }
+        [TestCase(1001)]
+        [TestCase(2004)]
+        [TestCase(3500)]
+        public void BonusShouldIncreaseBalance(decimal
+            bonusAmount)
+        {
+            BankAccount bankAccount = new BankAccount(123);
+            bankAccount.Balance = bankAccount.Bonus();
+            Assert.AreEqual(bankAccount.Bonus(), bankAccount.Balance);
+        }
+
     }
 
 }
